@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On est samedi - Français Authentique | اليوم هو السبت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        amberCustom: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        arabic: ['Alexandria', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Outfit', 'Alexandria', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .arabic-text {
+            font-family: 'Alexandria', sans-serif;
+            direction: rtl;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0284c7 0%, #3b82f6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-warm {
+            background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 glass-card shadow-sm border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/20">
+                    <i class="fa-solid fa-mug-hot text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">On est samedi</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text">اليوم هو السبت - Français Authentique</p>
+                </div>
+            </div>
+
+            <!-- Controls & Nav -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Changer le thème">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+                <button id="audioSimBtn" onclick="toggleAudioSimulation()" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400 hover:bg-sky-500/20 font-medium text-sm transition">
+                    <i id="audioIcon" class="fa-solid fa-volume-high"></i>
+                    <span id="audioText" class="hidden sm:inline">Écouter (Simulé)</span>
+                </button>
+                <a href="#vocab" class="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 text-sm font-semibold shadow-md shadow-indigo-500/20 transition arabic-text">
+                    المفردات
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative overflow-hidden py-12 lg:py-20 bg-gradient-to-b from-sky-50/50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-100 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 text-xs sm:text-sm font-medium border border-sky-200 dark:border-sky-800">
+                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
+                        <span>Pack 1 - Découverte</span>
+                        <span class="text-slate-300 dark:text-slate-700">|</span>
+                        <span class="arabic-text">مستوى للمبتدئين والمتوسطين</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none">
+                        <span class="block text-slate-900 dark:text-white">On est samedi !</span>
+                        <span class="block text-gradient mt-2 text-3xl sm:text-4xl lg:text-5xl arabic-text">أخيراً.. إنه يوم السبت!</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                        Après une semaine longue, difficile et chargée de stress au travail, découvrez la routine idéale et relaxante du samedi. Entre détente, café chaud, ménage sans pression et rencontres amicales.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#routine" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-600 text-white font-semibold text-base shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 transition-all duration-200">
+                            Explorer la journée <i class="fa-solid fa-arrow-down ml-2"></i>
+                        </a>
+                        <a href="#comparison" class="px-6 py-3.5 rounded-2xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-base border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200 shadow-sm">
+                            Travail vs Samedi ⚖️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 group">
+                        <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80" alt="Relaxing Morning Coffee" class="w-full h-[380px] object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent flex flex-col justify-end p-6 text-white">
+                            <div class="flex items-center space-x-2 text-amber-400 mb-1">
+                                <i class="fa-solid fa-sun"></i>
+                                <span class="text-xs font-semibold uppercase tracking-wider">Un Moment De Détente</span>
+                            </div>
+                            <h3 class="text-xl font-bold">"Rien n'est urgent aujourd'hui"</h3>
+                            <p class="text-sm text-slate-300 arabic-text mt-1">لا شيء عاجل اليوم، يمكنني أخذ وقتي براحة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stress vs Relax Comparison Widget -->
+    <section id="comparison" class="py-12 bg-white dark:bg-slate-900 border-y border-slate-200/60 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">La Semaine vs Le Samedi</h2>
+                <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-2 arabic-text">مقارنة بين ضغوطات أسبوع العمل وهدوء يوم السبت</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Stress Workweek Card -->
+                <div class="p-6 sm:p-8 rounded-3xl bg-red-50/50 dark:bg-red-950/20 border border-red-200/60 dark:border-red-900/40 relative overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-600 dark:text-red-400 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-red-900 dark:text-red-200">Pendant la semaine (العمل)</h3>
+                            <p class="text-xs text-red-600 dark:text-red-400">Stress, urgence et fatigue</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-slate-700 dark:text-slate-300 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-xmark text-red-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white">"Vite, je dois finir ce rapport !"</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text mt-0.5">سريعاً، يجب أن أنهي هذا التقرير!</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-xmark text-red-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white">"J'ai une réunion dans 15 minutes."</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text mt-0.5">لدي اجتماع خلال 15 دقيقة.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-xmark text-red-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white">"Pourquoi mon téléphone sonne-t-il si souvent ?"</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text mt-0.5">لماذا يرن هاتفي كثيراً؟</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Saturday Relax Card -->
+                <div class="p-6 sm:p-8 rounded-3xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-900/40 relative overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-mug-saucer"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-emerald-900 dark:text-emerald-200">Le Samedi (يوم السبت)</h3>
+                            <p class="text-xs text-emerald-600 dark:text-emerald-400">Calme, détente et autonomie</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-slate-700 dark:text-slate-300 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white">"Je peux prendre mon temps, quelle détente !"</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text mt-0.5">يمكنني أخذ وقتي، يا لترويح النفس!</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white">"Si je ne peux pas tout finir, ce n'est pas grave."</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text mt-0.5">إذا لم أستطع إنهاء كل شيء، فلا بأس بذلك.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white">"Rien n'est urgent !"</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text mt-0.5">لا يوجد شيء عاجل!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Routine Timeline -->
+    <section id="routine" class="py-16 bg-slate-50 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold tracking-wider text-sky-600 dark:text-sky-400 uppercase">Interactive Timeline</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">La Journée du Samedi Pas à Pas</h2>
+                <p class="text-base text-slate-600 dark:text-slate-400 mt-2 arabic-text">خطوات اليوم المريح تفصيلياً مع الصور والترجمة</p>
+            </div>
+
+            <!-- Steps Tabs Header -->
+            <div class="flex justify-center mb-10 overflow-x-auto pb-2 scrollbar-none">
+                <div class="inline-flex p-1.5 bg-slate-200/70 dark:bg-slate-800/80 rounded-2xl space-x-1 sm:space-x-2">
+                    <button onclick="switchStep(1)" id="tab-step-1" class="step-tab px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm">
+                        <i class="fa-solid fa-sun mr-1.5"></i> Le Matin (8h00)
+                    </button>
+                    <button onclick="switchStep(2)" id="tab-step-2" class="step-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200">
+                        <i class="fa-solid fa-broom mr-1.5"></i> Ménage & Courses
+                    </button>
+                    <button onclick="switchStep(3)" id="tab-step-3" class="step-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200">
+                        <i class="fa-solid fa-users mr-1.5"></i> L'Après-midi
+                    </button>
+                    <button onclick="switchStep(4)" id="tab-step-4" class="step-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200">
+                        <i class="fa-solid fa-wine-glass mr-1.5"></i> Le Soir
+                    </button>
+                    <button onclick="switchStep(5)" id="tab-step-5" class="step-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200">
+                        <i class="fa-solid fa-snowflake mr-1.5"></i> Dimanche & Neige
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step Content 1: Le Matin -->
+            <div id="step-content-1" class="step-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="flex items-center space-x-3">
+                        <span class="px-3 py-1 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">08:00 - Le Réveil</span>
+                        <span class="text-slate-400 text-sm">1 / 5</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Le petit-déjeuner et la détente</h3>
+                    
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                        "Généralement je me lève vers 8h00, puis je vais dans la salle de bain pour me laver. Ensuite, je prends mon petit déjeuner: je bois du café au lait, mange du pain avec du beurre et des biscuits. J'adore l'odeur du café et du pain grillé dans la cuisine."
+                    </p>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-sky-500 text-slate-700 dark:text-slate-300 arabic-text space-y-1">
+                        <div class="text-sm font-semibold text-sky-600 dark:text-sky-400">الترجمة بالعربية:</div>
+                        <p class="text-sm">
+                            عادة ما أستيقظ حوالي الساعة 8:00 صباحاً، ثم أذهب إلى الحمام للاستحمام. بعد ذلك، آخذ إفطاري: أشرب القهوة بالحليب، وآكل الخبز مع الزبدة والبسكويت. أعشق رائحة القهوة والخبز المحمص في المطبخ.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">☕ Café au lait</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">🍞 Pain grillé & beurre</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">📺 Télévision & emails</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-[320px]">
+                        <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80" alt="Breakfast Table" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 p-3 bg-slate-900/70 backdrop-blur-md rounded-xl text-white text-xs">
+                            <i class="fa-solid fa-tv mr-1.5 text-amber-400"></i> "C'est très reposant car je ne suis pas pressé: je peux prendre mon temps."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Content 2: Ménage & Courses -->
+            <div id="step-content-2" class="step-card hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="flex items-center space-x-3">
+                        <span class="px-3 py-1 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">Milieu de matinée</span>
+                        <span class="text-slate-400 text-sm">2 / 5</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Le rangement et les courses sans stress</h3>
+                    
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                        "Après le petit-déjeuner, je range l'appartement, je fais le ménage puis je fais les courses. Il faut bien travailler un peu... Mais encore une fois sans stress. Si je ne peux pas tout finir, ce n'est pas grave."
+                    </p>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-blue-500 text-slate-700 dark:text-slate-300 arabic-text space-y-1">
+                        <div class="text-sm font-semibold text-blue-600 dark:text-blue-400">الترجمة بالعربية:</div>
+                        <p class="text-sm">
+                            بعد الإفطار، أرتب الشقة، أقوم بتنظيف البيت ثم أتسوق المستلزمات. يجب أن نعمل قليلاً... ولكن مرة أخرى بدون توتر. إذا لم أستطع إنهاء كل شيء، فهذا ليس بالأمر الجلل.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">🧹 Ranger l'appartement</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">🛒 Faire les courses</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">😌 Sans stress</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-[320px]">
+                        <img src="https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=800&q=80" alt="Groceries Shopping" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 p-3 bg-slate-900/70 backdrop-blur-md rounded-xl text-white text-xs">
+                            <i class="fa-solid fa-basket-shopping mr-1.5 text-blue-400"></i> "Faire les courses... Il faut bien travailler un peu !"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Content 3: L'Après-midi -->
+            <div id="step-content-3" class="step-card hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="flex items-center space-x-3">
+                        <span class="px-3 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">Après-Midi</span>
+                        <span class="text-slate-400 text-sm">3 / 5</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Café entre amis & Anecdotes</h3>
+                    
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                        "L'après-midi, après un repas léger, je vais souvent boire un café avec mes amis. Nous discutons de notre semaine. Chacun raconte des anecdotes sur son travail. C'est intéressant de voir que finalement, tout le monde est très occupé pendant la semaine."
+                    </p>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-emerald-500 text-slate-700 dark:text-slate-300 arabic-text space-y-1">
+                        <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">الترجمة بالعربية:</div>
+                        <p class="text-sm">
+                            في بعد الظهيرة، بعد وجبة خفيفة، أذهب غالباً لشرب القهوة مع أصدقائي. نتناقش حول أسبوعنا. يروي كل منا مواقف وطقوس من عمله. من الممتع أن نرى أن الجميع في النهاية مشغولون جداً خلال الأسبوع.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">🥗 Repas léger</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">☕ Café en terrasse</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">🗣️ Anecdotes de travail</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-[320px]">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="Friends having coffee" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 p-3 bg-slate-900/70 backdrop-blur-md rounded-xl text-white text-xs">
+                            <i class="fa-solid fa-comments mr-1.5 text-emerald-400"></i> "Nous discutons de notre semaine autour d'un café."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Content 4: Le Soir -->
+            <div id="step-content-4" class="step-card hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="flex items-center space-x-3">
+                        <span class="px-3 py-1 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 text-xs font-bold uppercase tracking-wider">Soirée</span>
+                        <span class="text-slate-400 text-sm">4 / 5</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Dîner agréable & Verre de vin</h3>
+                    
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                        "Le soir, soit je prends mon repas avec ma femme, soit nous rencontrons nos amis. Dans tous les cas c'est un moment très agréable. Nous discutons et rions autour d'un verre de vin, autrichien, italien, espagnol ou bien sûr français."
+                    </p>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-purple-500 text-slate-700 dark:text-slate-300 arabic-text space-y-1">
+                        <div class="text-sm font-semibold text-purple-600 dark:text-purple-400">الترجمة بالعربية:</div>
+                        <p class="text-sm">
+                            في المساء، إما أن أتتاول وجبتي مع زوجتي، أو نلتقي بأصدقائنا. في كل الأحوال، إنها لحظة ممتعة للغاية. نتحدث ونضحك حول كأس من النبيد النمساوي، الإيطالي، الإسباني أو بالطبع الفرنسي.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">🍷 Verre de vin</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">❤️ En famille / Amis</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">😂 Rires et échanges</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-[320px]">
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80" alt="Evening Dinner with Friends" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 p-3 bg-slate-900/70 backdrop-blur-md rounded-xl text-white text-xs">
+                            <i class="fa-solid fa-wine-glass-empty mr-1.5 text-purple-400"></i> "Un moment très agréable autour d'un verre."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Content 5: Dimanche & Neige -->
+            <div id="step-content-5" class="step-card hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl">
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="flex items-center space-x-3">
+                        <span class="px-3 py-1 rounded-lg bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 text-xs font-bold uppercase tracking-wider">Promenade & Dimanche</span>
+                        <span class="text-slate-400 text-sm">5 / 5</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Promenade à -5°C & Dimanche paisible</h3>
+                    
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                        "Aujourd'hui, par exemple, il neige et la température est de -5 degrés. Et bien je vais aller me promener et respirer l'air frais. Le dimanche est également une journée très agréable, encore plus calme... Même si le soir on se dit: demain le travail !"
+                    </p>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-cyan-500 text-slate-700 dark:text-slate-300 arabic-text space-y-1">
+                        <div class="text-sm font-semibold text-cyan-600 dark:text-cyan-400">الترجمة بالعربية:</div>
+                        <p class="text-sm">
+                            اليوم، على سبيل المثال، تثلج ودرجة الحرارة -5 درجات. سأذهب للتنزه واستنشاق الهواء النقي. يوم الأحد هو أيضاً يوم لطيف جداً وأكثر هدوءاً... حتى لو نقول في المساء: غداً العمل!
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">❄️ Il neige (-5°C)</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">🚶‍♂️ Respirer l'air frais</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">📆 Le dimanche calme</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-[320px]">
+                        <img src="https://images.unsplash.com/photo-1483664852095-d6cc6870702d?auto=format&fit=crop&w=800&q=80" alt="Snow Walk" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 right-3 p-3 bg-slate-900/70 backdrop-blur-md rounded-xl text-white text-xs">
+                            <i class="fa-solid fa-snowflake mr-1.5 text-cyan-300"></i> "Respirer l'air frais malgré les -5°C."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Vocabulary Section -->
+    <section id="vocab" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-semibold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase">Glossaire & Vocabulaire</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Vocabulaire Clé & Expressions</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1 arabic-text">أهم المفردات والتعابير المستخدمة في النص مع ترجمتها للغة العربية</p>
+                </div>
+                <!-- Filter Search -->
+                <div class="mt-4 md:mt-0 relative w-full md:w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                    <input type="text" id="vocabSearch" onkeyup="filterVocab()" placeholder="Chercher un mot / إبحث عن كلمة..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border-0 text-sm text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-sky-500 outline-none">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="vocabGrid">
+                
+                <!-- Card 1 -->
+                <div class="vocab-card p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wide">Expression</span>
+                        <i class="fa-solid fa-clock text-slate-400 text-xs"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Je ne suis pas pressé</h4>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 arabic-text font-medium text-right">لستُ مستعجلاً</p>
+                    <p class="text-xs text-slate-400 mt-2 italic">Ex: C'est reposant car je ne suis pas pressé.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="vocab-card p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">Action</span>
+                        <i class="fa-solid fa-basket-shopping text-slate-400 text-xs"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Faire les courses</h4>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 arabic-text font-medium text-right">التسوق / شراء المستلزمات اليومية</p>
+                    <p class="text-xs text-slate-400 mt-2 italic">Ex: Après le petit déjeuner, je fais les courses.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="vocab-card p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wide">Ménage</span>
+                        <i class="fa-solid fa-broom text-slate-400 text-xs"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Faire le ménage</h4>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 arabic-text font-medium text-right">تنظيف المنزل</p>
+                    <p class="text-xs text-slate-400 mt-2 italic">Ex: Je range l'appartement et je fais le ménage.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="vocab-card p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">Sentiment</span>
+                        <i class="fa-solid fa-face-smile text-slate-400 text-xs"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Quelle détente !</h4>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 arabic-text font-medium text-right">يا للراحة! / يا لترويح النفس!</p>
+                    <p class="text-xs text-slate-400 mt-2 italic">Ex: Je peux prendre mon temps, quelle détente !</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="vocab-card p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">Nom</span>
+                        <i class="fa-solid fa-comment-dots text-slate-400 text-xs"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Des anecdotes</h4>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 arabic-text font-medium text-right">قصص قصيرة / طرائف ومواقف</p>
+                    <p class="text-xs text-slate-400 mt-2 italic">Ex: Chacun raconte des anecdotes sur son travail.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="vocab-card p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Expression</span>
+                        <i class="fa-solid fa-triangle-exclamation text-slate-400 text-xs"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Ce n'est pas grave</h4>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 arabic-text font-medium text-right">ليس بالأمر الجلل / لا بأس</p>
+                    <p class="text-xs text-slate-400 mt-2 italic">Ex: Si je ne peux pas tout finir, ce n'est pas grave.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Text Drawer / Full Reading Mode -->
+    <section class="py-16 bg-slate-50 dark:bg-slate-950">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-xl">
+                <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-100 dark:border-slate-800">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Texte Intégral du Récit</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text mt-0.5">النص الكامل للمقال لقراءته بطلاقة</p>
+                    </div>
+                    <button onclick="toggleFullTranslation()" id="transToggleBtn" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i class="fa-solid fa-language mr-1"></i> Traduction Arabe
+                    </button>
+                </div>
+
+                <article class="prose dark:prose-invert max-w-none space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+                    <p>
+                        J'ai passé une semaine longue et difficile. J'ai beaucoup de travail, de problèmes et je suis fatigué. Mais heureusement aujourd'hui on est samedi !
+                    </p>
+                    <div class="full-trans hidden p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 text-sm text-slate-600 dark:text-slate-400 arabic-text">
+                        لقد قضيت أسبوعاً طويلاً وصعباً. لدي الكثير من العمل، والمشاكل وأنا متعب. ولكن لحسن الحظ، اليوم هو السبت!
+                    </div>
+
+                    <p>
+                        J'adore le samedi. Généralement je me lève vers 8h00, puis je vais dans la salle de bain pour me laver. Ensuite, je prends mon petit déjeuner: je bois du café au lait, mange du pain avec du beurre et des biscuits. J'adore l'odeur du café et du pain grillé dans la cuisine.
+                    </p>
+                    <div class="full-trans hidden p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 text-sm text-slate-600 dark:text-slate-400 arabic-text">
+                        أعشق يوم السبت. عادة ما أستيقظ حول الساعة 8:00، ثم أذهب إلى الحمام للاستحمام. بعد ذلك أتناول إفطاري: أشرب القهوة بالحليب، وآكل الخبز مع الزبدة والبسكويت. أعشق رائحة القهوة والخبز المحمص في المطبخ.
+                    </div>
+
+                    <p>
+                        Souvent, je regarde la télévision. C'est très reposant car je ne suis pas pressé: je peux prendre mon temps. Quelle détente! Parfois je reste devant l'ordinateur. Je lis mes e-mails, je communique avec mes amis sur Facebook ou je lis les nouvelles sur « lemonde.fr ». Mais j'essaye de faire attention de ne pas rester trop longtemps sur internet. Il y a aussi d'autres choses à faire.
+                    </p>
+
+                    <p>
+                        Après le petit-déjeuner, je range l'appartement, je fais le ménage puis je fais les courses. Il faut bien travailler un peu... Mais encore une fois sans stress. Si je ne peux pas tout finir, ce n'est pas grave. J'aime ce sentiment. En général, au travail, je pense toujours: « vite je dois finir ce rapport » ou « j'ai une réunion dans 15 minutes » ou encore « pourquoi mon téléphone sonne-t-il si souvent ? ».
+                    </p>
+
+                    <p>
+                        L'après-midi, après un repas léger, je vais souvent boire un café avec mes amis. Nous discutons de notre semaine. Chacun raconte des anecdotes sur son travail. C'est intéressant de voir que finalement, tout le monde est très occupé pendant la semaine.
+                    </p>
+
+                    <p>
+                        Le soir, soit je prends mon repas avec ma femme, soit nous rencontrons nos amis. Dans tous les cas c'est un moment très agréable. Nous discutons et rions autour d'un verre de vin, autrichien, italien, espagnol ou bien sûr français.
+                    </p>
+
+                    <p>
+                        Le samedi est pour moi le plus beau jour de la semaine: rien n'est urgent et si je suis encore fatigué, il reste le dimanche... Quel que soit le temps, il y a toujours quelque chose d'intéressant à faire: du sport, une promenade, du shopping, de la détente. Aujourd'hui, par exemple, il neige et la température est de -5 degrés. Et bien je vais aller me promener et respirer l'air frais.
+                    </p>
+
+                    <p>
+                        Le dimanche est également une journée très agréable. C'est encore plus calme que le samedi. Il y a peu de gens dans les rues et les magasins sont fermés. Mais le soir je me dis « demain il faut aller au travail, oh non ! ». Mais bon c'est la vie!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-left">
+                <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Français Authentique - Interactive Reader</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 arabic-text">مصمم للتعلم التفاعلي وتحسين اللغة الفرنسية</p>
+            </div>
+            <div class="flex items-center space-x-4 text-xs text-slate-500 dark:text-slate-400">
+                <span>© Français Authentique</span>
+                <span>•</span>
+                <span>Pack 1 - Découverte</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Tab Switching Logic
+        function switchStep(stepIndex) {
+            // Hide all contents
+            document.querySelectorAll('.step-card').forEach(el => {
+                el.classList.add('hidden');
+            });
+            // Show target content
+            const activeCard = document.getElementById(`step-content-${stepIndex}`);
+            if (activeCard) {
+                activeCard.classList.remove('hidden');
+            }
+
+            // Update Tab styles
+            document.querySelectorAll('.step-tab').forEach(tab => {
+                tab.className = "step-tab px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200";
+            });
+
+            const activeTab = document.getElementById(`tab-step-${stepIndex}`);
+            if (activeTab) {
+                activeTab.className = "step-tab px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm";
+            }
+        }
+
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const htmlEl = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (htmlEl.classList.contains('dark')) {
+                htmlEl.classList.remove('dark');
+                themeIcon.className = "fa-solid fa-moon";
+            } else {
+                htmlEl.classList.add('dark');
+                themeIcon.className = "fa-solid fa-sun text-amber-400";
+            }
+        }
+
+        // Audio Toggle Simulation
+        let isPlayingAudio = false;
+        function toggleAudioSimulation() {
+            const audioIcon = document.getElementById('audioIcon');
+            const audioText = document.getElementById('audioText');
+
+            if (!isPlayingAudio) {
+                isPlayingAudio = true;
+                audioIcon.className = "fa-solid fa-pause text-amber-500 animate-pulse";
+                audioText.innerText = "Lecture en cours...";
+            } else {
+                isPlayingAudio = false;
+                audioIcon.className = "fa-solid fa-volume-high";
+                audioText.innerText = "Écouter (Simulé)";
+            }
+        }
+
+        // Vocabulary Search Filter
+        function filterVocab() {
+            const query = document.getElementById('vocabSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.vocab-card');
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Toggle Arabic Translation in Text Reader
+        let showTrans = false;
+        function toggleFullTranslation() {
+            const transEls = document.querySelectorAll('.full-trans');
+            const btn = document.getElementById('transToggleBtn');
+            showTrans = !showTrans;
+
+            transEls.forEach(el => {
+                if (showTrans) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            btn.classList.toggle('bg-sky-600', showTrans);
+            btn.classList.toggle('text-white', showTrans);
+        }
+    </script>
+</body>
+</html>
